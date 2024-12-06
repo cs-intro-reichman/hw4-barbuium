@@ -150,31 +150,29 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-        if (str1 == null && str2 == null) {
-            return 0;
-        }
-        if (str1 == null) {
-            return -1;
-        }
-
-        if (str2 == null) {
-            return 1;
-        }
-
-        str1 = str1.trim();
-        str2 = str2.trim();
-        str1 = str1.toLowerCase();
-        str2 = str2.toLowerCase();
-            
-        int minLength = Math.min(str1.length(), str2.length());
-
-        for (int i = 0; i < minLength; i++) {
-            int comparison = Character.compare(str1.charAt(i), str2.charAt(i));
-            if (comparison != 0) {
-                return comparison; // Return negative if str1 is smaller, positive if greater
+        if(str1==""||str2=="") return -2;
+        if (str1==str2) return 0;
+        if (str1.length()==str2.length()) {
+            for (int i=0;i<str1.length();i++) {
+                if (str1.charAt(i)!=str2.charAt(i)) {
+                    if (str1.charAt(i)<str2.charAt(i)) {
+                        return -1;
+                    }
+                    else return 1;
+                }
             }
         }
-        
-        return Integer.compare(str1.length(), str2.length());
+        if (str1.length()!=str2.length()) {
+            for (int i=0;i<str1.length();i++) {
+                if (str1.charAt(i)!=str2.charAt(i)) {
+                    if (str1.charAt(i)<str2.charAt(i)) {
+                        return -1;
+                    }
+                    else return 1;
+                }
+            }
+            return -1;
+        }
+        return 0;
     }
 }
