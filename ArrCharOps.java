@@ -150,9 +150,19 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-        if (str1 == null || str2 == null) {
-            return -2;
+        if (str1 == null && str2 == null) {
+            return 0;
         }
+        if (str1 == null) {
+            return -1;
+        }
+
+        if (str2 == null) {
+            return 1;
+        }
+
+        str1 = str1.trim();
+        str2 = str2.trim();
         str1 = str1.toLowerCase();
         str2 = str2.toLowerCase();
             
